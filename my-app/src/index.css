@@ -3,3 +3,42 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.startBoard{
+  margin: 100px;
+  width: 250px;
+  line-height: 150px;
+  text-align: center;
+  background-color: lightgreen;
+  border-radius: 4px;
+  font-size: 20px;
+  color: white;
+}
+.startBoard:hover{
+  cursor: pointer;
+  background-color: limegreen;
+}
+.creatingBoard{
+  height: 300px;
+  line-height: normal;
+  padding: 15px
+}
+.creatingBoard > *{
+  margin-top: 10px;
+  width: 100%;
+}
+.creatingBoard > input{
+  height: 30px;
+  font-size: 20px;
+}
+.creatingBoard > div{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+.creatingBoard > div > button {
+  height: 40px;
+}
+.creatingBoard > div > button:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
