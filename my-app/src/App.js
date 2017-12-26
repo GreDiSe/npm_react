@@ -4,37 +4,56 @@ import './App.css';
 class App extends Component {
     constructor(props){
         super(props);
-        this.boards = [];
-        this.state = {status: this.START_BOARD}
-
-        this.START_BOARD = 0;
-        this.CREATE_BOARD = 1;
+        this.state = {screen: this.startScreen, boards: []};
     }
-
+    addToHeadBoard = () =>{
+        const curText = this.refs.headerText.value;
+        this.setState(prevState => {
+            const newBoard = prevState.boards.concat();
+            newBoard.push({name: curText, tasks: []});
+            return {boards: newBoard};
+        });
+        this.refs.headerText.value = '';
+    };
+    renderHeaderBoard = () => {
+        return this.state.boards.map((cur, i) => {
+            return <div key={i} className={'createdBoard'}>
+                <span className={'createCloseButton'}/>
+                {cur.name}
+                </div>
+        })
+    };
     startScreen = () => {
-        return <div onClick={() => this.choseScreen(this.CREATE_BOARD)}>
-            <button className={'startBoard'}>Create new board</button>
+        return <div className={'container'}>
+            <div>
+                <button
+                    onClick={() => this.choseScreen(this.creatingBoardScreen)}
+                    className={'startBoard'}>Create new board</button>
+            </div>
+            {this.renderHeaderBoard()}
         </div>
     };
     creatingBoardScreen = () =>{
-        return <div className={'startBoard creatingBoard'}>
-            <h3>Creating board</h3>
-            <p>What shall we call the board?</p>
-            <input type={'text'} />
-            <div>
-                <button>Cancel</button>
-                <button>Create</button>
+        return <div className={'container'}>
+            <div className={'startBoard creatingBoard'}>
+                <h3>Creating board</h3>
+                <p>What shall we call the board?</p>
+                <input ref={'headerText'} type={'text'} />
+                <div>
+                    <button onClick={() => this.choseScreen(this.startScreen)}>Cancel</button>
+                    <button onClick={this.addToHeadBoard}>Create</button>
+                </div>
             </div>
+            {this.renderHeaderBoard()}
         </div>
     };
     choseScreen = screen => {
         this.setState(() => {
-            return {status: screen}
+            return {screen: screen}
         })
     };
     render(){
-        if(this.state.status === this.START_BOARD) return this.startScreen();
-        else if(this.state.status === this.CREATE_BOARD) return this.creatingBoardScreen();
+        return this.state.screen();
     }
 
 }

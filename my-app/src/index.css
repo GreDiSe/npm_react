@@ -4,12 +4,12 @@ body {
   font-family: sans-serif;
 }
 .startBoard{
-  margin: 100px;
+  margin: 50px;
   width: 250px;
   line-height: 150px;
   text-align: center;
   background-color: lightgreen;
-  border-radius: 4px;
+  border-radius: 15px;
   font-size: 20px;
   color: white;
 }
@@ -18,7 +18,7 @@ body {
   background-color: limegreen;
 }
 .creatingBoard{
-  height: 300px;
+  height: 250px;
   line-height: normal;
   padding: 15px
 }
@@ -41,4 +41,33 @@ body {
 .creatingBoard > div > button:hover {
   cursor: pointer;
   background-color: lightgrey;
+}
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.createdBoard{
+  position: relative;
+  color: white;
+  font-size: 22px;
+  margin: 50px;
+  height: 250px;
+  line-height: 250px;
+  background-color: lightgreen;
+  text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+}
+.createdBoard:hover{
+  background-color: limegreen;
+  cursor: pointer;
+}
+.createCloseButton{
+  position: absolute;
+  background-image: url("close2.png");
+  width: 25px;
+  height: 25px;
+  right: 0;
+  top: 0;
+
 }
