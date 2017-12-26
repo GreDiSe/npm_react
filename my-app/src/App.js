@@ -18,16 +18,17 @@ class App extends Component {
         this.setState(prevState => {
             const newBoard = prevState.boards.concat();
             newBoard.push({name: curText, tasks: []});
-            return {boards: newBoard};
+            return {boards: newBoard, screen: this.startScreen};
         });
-        this.refs.headerText.value = '';
+        this.refs.headerText.value = ''
+        ;
     };
     renderHeaderBoard = () => {
         return this.state.boards.map((cur, i) => {
             return <div key={i} className={'createdBoard'}>
                 <span onClick={() => this.closeBoard(i)} className={'createCloseButton'}/>
                 {cur.name}
-                </div>
+            </div>
         })
     };
     startScreen = () => {
