@@ -6,6 +6,13 @@ class App extends Component {
         super(props);
         this.state = {screen: this.startScreen, boards: []};
     }
+    closeBoard = index =>{
+        this.setState(prevState => {
+            const newBoard = prevState.boards.concat();
+            newBoard.splice(index, 1);
+            return {boards: newBoard};
+        })
+    };
     addToHeadBoard = () =>{
         const curText = this.refs.headerText.value;
         this.setState(prevState => {
@@ -18,7 +25,7 @@ class App extends Component {
     renderHeaderBoard = () => {
         return this.state.boards.map((cur, i) => {
             return <div key={i} className={'createdBoard'}>
-                <span className={'createCloseButton'}/>
+                <span onClick={() => this.closeBoard(i)} className={'createCloseButton'}/>
                 {cur.name}
                 </div>
         })
