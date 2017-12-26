@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
     constructor(props){
@@ -59,6 +59,19 @@ class App extends Component {
         this.setState(() => {
             return {screen: screen}
         })
+    };
+    renderAddTaskBlock = () => {
+
+    };
+    render
+    taskScreen = index => {
+        return <div>
+            <h3>{this.state.boards[index].name}</h3>
+            <div className={'container'}>
+                <div>{this.renderAddTaskBlock}</div>
+                {}
+            </div>
+        </div>
     };
     render(){
         return this.state.screen();

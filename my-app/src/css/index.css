@@ -65,7 +65,7 @@ body {
 }
 .createdBoard:hover .createCloseButton{
   position: absolute;
-  background-image: url("close2.png");
+  background-image: url("../img/close2.png");
   width: 26px;
   height: 26px;
   right: 0;
