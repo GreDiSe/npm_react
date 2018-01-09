@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import '../css/Board.css';
-import BoardName from "./BoardName";
-import BoardTasks from "./BoardTasks";
-
+import BoardHeader from "./BoardHeader";
+import BoardTasks from "./BoardTask";
 
 class Board extends Component {
-    constructor(props){
-        super(props);
-    }
-
     changeTaskToBoard = (value, index) => {
-        this.props.board.tasks[index] = value;
-        this.props.setNewState(this.props.board);
+        const newBoard = this.props.board;
+        newBoard.tasks[index] = value;
+        this.props.setNewState(newBoard);
     };
 
-
-
     removeTask = index => {
-        this.props.board.tasks.splice(index, 1);
-        this.props.setNewState(this.props.board);
+        const newBoard = this.props.board;
+        newBoard.tasks.splice(index, 1);
+        this.props.setNewState(newBoard);
     };
 
     renderBoardTask = () => {
@@ -37,7 +32,7 @@ class Board extends Component {
     render(){
         return(
             <div className={'board'}>
-                <BoardName
+                <BoardHeader
                     removeBoard={this.props.removeBoard}
                     board={this.props.board}
                     setNewState={this.props.setNewState}

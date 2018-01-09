@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import '../css/BoardAdd.css';
 
 class BoardAdd extends Component {
-    constructor(props){
-        super(props);
-    }
-
     addBoardName = () => {
         const name = this.refs.lineName.value;
+        const newBoard = this.props.boards.concat();
         this.refs.lineName.value = '';
         this.props.setNewState(() => {
-            this.props.boards.push({name: name, tasks: []})
-            return {boards: this.props.boards}
+            newBoard.push({name: name, tasks: []});
+            return {boards: newBoard}
         })
     };
 

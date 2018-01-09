@@ -27,7 +27,6 @@ class App extends Component {
 
     renderBoards = () => {
         return this.state.boards.map((curBoard, i) => {
-            console.log(curBoard);
             return (
                 <Board
                     key={i}
@@ -40,6 +39,7 @@ class App extends Component {
     };
 
     render(){
+        console.log(this.state.boards);
         return (
             <div className={'containerForBoards'}>
                 {this.renderBoards()}

@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import '../css/BoardTasks.css';
+import '../css/BoardTask.css';
 
-class BoardTasks extends Component {
+
+class BoardTask extends Component {
     constructor(props){
         super(props);
-        this.DONE = 1;
-        this.IN_PROGRESS = 0;
+        this.DONE = 'DONE';
+        this.IN_PROGRESS = "IN_PROGRESS";
     }
 
     changeTaskStatus = () => {
-        this.props.task.status = this.props.task.status === this.DONE ? this.IN_PROGRESS : this.DONE;
-        this.props.setNewState(this.props.task)
+        const newTask = this.props.task;
+        newTask.status = newTask.status === this.DONE ? this.IN_PROGRESS : this.DONE;
+        this.props.setNewState(newTask)
     };
 
     crossOut = () => {
@@ -18,7 +20,6 @@ class BoardTasks extends Component {
     };
 
     render(){
-        console.log(this.props.task);
         return (
             <div className={'BoardTasks'}>
                 <h5 className={this.crossOut()} onClick={this.changeTaskStatus}>{this.props.task.name}</h5>
@@ -27,4 +28,4 @@ class BoardTasks extends Component {
         )
     }
 }
-export default BoardTasks;
+export default BoardTask;

@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import '../css/BoardName.css';
+import '../css/BoardHeader.css';
 
-class BoardName extends Component {
+class BoardHeader extends Component {
     constructor(props){
         super(props);
-        this.DONE = 1;
-        this.IN_PROGRESS = 0;
+        this.DONE = 'DONE';
+        this.IN_PROGRESS = "IN_PROGRESS";
+
     }
 
     addTaskName = () => {
         const name = this.refs.lineTaskName.value;
+        const newBoard = this.props.board;
+
         this.refs.lineTaskName.value = '';
-        this.props.board.tasks.push({name: name, status: this.IN_PROGRESS});
-        this.props.setNewState(this.props.board.tasks);
+        newBoard.tasks.push({name: name, status: this.IN_PROGRESS});
+        console.log(newBoard);
+        this.props.setNewState(newBoard);
     };
 
 
@@ -37,4 +41,4 @@ class BoardName extends Component {
         )
     }
 }
-export default BoardName;
+export default BoardHeader;
