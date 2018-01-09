@@ -1,0 +1,38 @@
+.BoardTasks{
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    border: 1px solid black;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    background-color: darkslategray;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+}
+.BoardTasks > h5{
+    margin: 3px;
+    font-size: 16px;
+}
+.BoardTasks > h5:hover{
+    cursor: pointer;
+    color: lightgrey;
+}
+.BoardTaskDeleteTask{
+    background-image: url("../img/whiteClose.png");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+
+}
+.BoardTaskDeleteTask:hover {
+    cursor: pointer;
+    background-image: url("../img/greyClose.png");
+}
+.crossOut{
+    text-decoration: line-through;
+    color: lightgrey;
+}
+.notCrossOut{
+    text-decoration: none;
+}

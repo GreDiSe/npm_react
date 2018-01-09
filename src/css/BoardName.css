@@ -1,0 +1,28 @@
+.BoardName{
+    border: 1px solid black;
+    height: 70px;
+    text-align: center;
+    font-size: 18px;
+    background-color: darkslategray;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+}
+.BoardName > *{
+    margin: 0;
+}
+.BoardNameEditLine > input {
+    height: 30px;
+}
+.BoardNameEditLine > button {
+    width: 50px
+}
+.BoardNameEditLine > button:hover {
+    cursor: pointer;
+}
+.BoardNameEditLine{
+    margin: 5px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 6fr 1fr;
+}

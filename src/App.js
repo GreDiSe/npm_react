@@ -1,79 +1,54 @@
 import React, { Component } from 'react';
 import './css/App.css';
+import Board from "./components/Board";
+import BoardAdd from "./components/BoardAdd";
 
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = {screen: this.startScreen, boards: []};
+        this.state = {boards: []};
     }
-    closeBoard = index =>{
-        this.setState(prevState => {
-            const newBoard = prevState.boards.concat();
-            newBoard.splice(index, 1);
-            return {boards: newBoard};
-        })
-    };
-    addToHeadBoard = () =>{
-        const curText = this.refs.headerText.value;
-        this.setState(prevState => {
-            const newBoard = prevState.boards.concat();
-            newBoard.push({name: curText, tasks: []});
-            return {boards: newBoard, screen: this.startScreen};
-        });
-        this.refs.headerText.value = ''
-        ;
-    };
-    renderHeaderBoard = () => {
-        return this.state.boards.map((cur, i) => {
-            return <div key={i} className={'createdBoard'}>
-                <span onClick={() => this.closeBoard(i)} className={'createCloseButton'}/>
-                {cur.name}
-            </div>
-        })
-    };
-    startScreen = () => {
-        return <div className={'container'}>
-            <div>
-                <button
-                    onClick={() => this.choseScreen(this.creatingBoardScreen)}
-                    className={'startBoard'}>Create new board</button>
-            </div>
-            {this.renderHeaderBoard()}
-        </div>
-    };
-    creatingBoardScreen = () =>{
-        return <div className={'container'}>
-            <div className={'startBoard creatingBoard'}>
-                <h3>Creating board</h3>
-                <p>What shall we call the board?</p>
-                <input ref={'headerText'} type={'text'} />
-                <div>
-                    <button onClick={() => this.choseScreen(this.startScreen)}>Cancel</button>
-                    <button onClick={this.addToHeadBoard}>Create</button>
-                </div>
-            </div>
-            {this.renderHeaderBoard()}
-        </div>
-    };
-    choseScreen = screen => {
-        this.setState({screen})
-    };
-    renderAddTaskBlock = () => {
 
+    changeBoardState = (newState, index) => {
+        const newBoard = this.state.boards.concat();
+        newBoard[index] = newState;
+        this.setState({board: newState});
     };
-    taskScreen = index => {
-        return <div>
-            <h3>{this.state.boards[index].name}</h3>
-            <div className={'container'}>
-                <div>{this.renderAddTaskBlock}</div>
-                {}
-            </div>
-        </div>
+
+    addNewBoardState = newState => {
+        this.setState(newState)
     };
+
+    removeBoard = index => {
+        const newBoard = this.state.boards.concat();
+        newBoard.splice(index, 1);
+        this.setState({boards: newBoard})
+    };
+
+    renderBoards = () => {
+        return this.state.boards.map((curBoard, i) => {
+            console.log(curBoard);
+            return (
+                <Board
+                    key={i}
+                    board={curBoard}
+                    removeBoard={() => this.removeBoard(i)}
+                    setNewState={value => this.changeBoardState(value, i)}
+                />
+            )
+        })
+    };
+
     render(){
-        return this.state.screen();
+        return (
+            <div className={'containerForBoards'}>
+                {this.renderBoards()}
+                <BoardAdd
+                    boards={this.state.boards}
+                    setNewState={this.addNewBoardState}
+                />
+            </div>
+        )
     }
-
 }
-
 export default App;

@@ -1,0 +1,23 @@
+.boardAdd{
+    width: 200px;
+    margin: auto;
+    height: 150px;
+    color: white;
+    background-color: indianred;
+    text-align: center;
+    font-family: "Droid Sans Mono", serif;
+    border: 1px solid black;
+}
+
+.boardAdd > button{
+    width: 130px;
+    margin: 10px;
+    height: 30px;
+}
+.boardAdd > button:hover{
+    cursor: pointer;
+}
+
+.boardAdd > input{
+    height: 35px;
+}
