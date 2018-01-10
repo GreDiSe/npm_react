@@ -10,7 +10,7 @@ class BoardTask extends Component {
     }
 
     changeTaskStatus = () => {
-        const newTask = this.props.task;
+        const newTask = Object.assign({}, this.props.task);
         newTask.status = newTask.status === this.DONE ? this.IN_PROGRESS : this.DONE;
         this.props.setNewState(newTask)
     };

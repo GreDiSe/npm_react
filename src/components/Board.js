@@ -11,7 +11,7 @@ class Board extends Component {
     };
 
     removeTask = index => {
-        const newBoard = this.props.board;
+        const newBoard = Object.assign({}, this.props.board);
         newBoard.tasks.splice(index, 1);
         this.props.setNewState(newBoard);
     };
